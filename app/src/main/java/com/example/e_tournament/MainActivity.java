@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -76,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_logout:
                 Toast.makeText(this, "Logging off", Toast.LENGTH_LONG).show();
+                Intent login = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(login);
                 break;
 
         }

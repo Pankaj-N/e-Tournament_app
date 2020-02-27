@@ -1,15 +1,11 @@
 package com.example.e_tournament;
 
-import android.app.Dialog;
-import android.content.Intent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,18 +16,12 @@ public class LoginActivity extends AppCompatActivity {
     Button mButtonLogin;
     TextView mTextViewRegister;
     DatabaseHelper db;
-    ViewGroup progressView;
-    protected boolean isProgressShowing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Dialog dialog = new Dialog(this,android.R.style.Theme_Translucent_NoTitleBar);
-        View v = this.getLayoutInflater().inflate(R.layout.progressbar,null);
-        dialog.setContentView(v);
-        dialog.show();
 
         db = new DatabaseHelper(this);
         mTextUsername = (EditText)findViewById(R.id.edittext_username);
@@ -54,30 +44,17 @@ public class LoginActivity extends AppCompatActivity {
                 Boolean res = db.checkUser(user, pwd);
                 if(res == true)
                 {
-                    Intent HomePage = new Intent(LoginActivity.this,Homepage.class);
-                    startActivity(HomePage);
+                    Toast.makeText(LoginActivity.this,"Login Error",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    Toast.makeText(LoginActivity.this,"Login Error",Toast.LENGTH_SHORT).show();
+                    Intent HomePage = new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(HomePage);
                 }
             }
         });
     }
 
-    public void showProgressingView() {
 
-        if (!isProgressShowing) {
-            View view=findViewById(R.id.progressBar1);
-            view.bringToFront();
-        }
-    }
-
-    public void hideProgressingView() {
-        View v = this.findViewById(android.R.id.content).getRootView();
-        ViewGroup viewGroup = (ViewGroup) v;
-        viewGroup.removeView(progressView);
-        isProgressShowing = false;
-    }
 }
 

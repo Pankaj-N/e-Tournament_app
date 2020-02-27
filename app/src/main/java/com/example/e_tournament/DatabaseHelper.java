@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "register.db";
     public static final String TABLE_NAME = "registeruser";
@@ -38,11 +40,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public long addUser(String user, String password) {
+    public long addUser(String user, String password, String firstname, String surname, String email, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", user);
         contentValues.put("password", password);
+        contentValues.put("First_Name", firstname);
+        contentValues.put("Surname", surname);
+        contentValues.put("Email", user);
+        contentValues.put("Date_Of_Birth", date);
         long res = db.insert("registeruser", null, contentValues);
         db.close();
         return res;
