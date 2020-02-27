@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="HomePage" />
+        <item
+            android:id="@+id/nav_create"
+            android:icon="@drawable/ic_create"
+            android:title="Create Tournament" />
+        <item
+            android:id="@+id/nav_join"
+            android:icon="@drawable/ic_join"
+            android:title="Join Tournament" />
+        <item
+            android:id="@+id/nav_player"
+            android:icon="@drawable/ic_player"
+            android:title="Add Player" />
+        <item
+            android:id="@+id/nav_team"
+            android:icon="@drawable/ic_team"
+            android:title="Add Team" />
+        <item
+            android:id="@+id/nav_past"
+            android:icon="@drawable/ic_past"
+            android:title="Past Tournament" />
+    </group>
+
+    <item android:title="More Tools">
+        <menu>
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_help"
+                android:title="Help!" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="Log Out :(" />
+        </menu>
+    </item>
+</menu>
