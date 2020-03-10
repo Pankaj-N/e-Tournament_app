@@ -18,8 +18,8 @@
             android:title="Join Tournament" />
         <item
             android:id="@+id/nav_player"
-            android:icon="@drawable/ic_player"
-            android:title="Add Player" />
+            android:icon="@drawable/ic_flip_black_24dp"
+            android:title="Flip Coin" />
         <item
             android:id="@+id/nav_team"
             android:icon="@drawable/ic_team"

@@ -1,75 +1,70 @@
 package com.example.e_tournament;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class RegisterActivity extends AppCompatActivity {
-    DatabaseHelper db;
-    EditText mTextUsername;
-    EditText mTextPassword;
-    EditText mTextCnfPassword;
-    EditText mFirstname;
-    EditText mSurname;
-    EditText mEmail;
-    EditText mDOB;
-    Button mButtonRegister;
-    TextView mTextViewLogin;
+
+    DatabaseHelper helper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        db = new DatabaseHelper(this);
-        mTextUsername = (EditText) findViewById(R.id.edittext_username);
-        mTextPassword = (EditText) findViewById(R.id.edittext_password);
-        mTextCnfPassword = (EditText) findViewById(R.id.edittext_cnf_password);
-        mFirstname = (EditText) findViewById(R.id.edittext_First_Name);
-        mSurname = (EditText) findViewById(R.id.edittext_Surname);
-        mEmail = (EditText) findViewById(R.id.edittext_Email);
-        mDOB = (EditText) findViewById(R.id.edittext_DOB);
-        mButtonRegister = (Button) findViewById(R.id.button_register);
-        mTextViewLogin = (TextView) findViewById(R.id.textview_login);
-        mTextViewLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent LoginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(LoginIntent);
-            }
-        });
-
-        mButtonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String user = mTextUsername.getText().toString().trim();
-                String pwd = mTextPassword.getText().toString().trim();
-                String cnf_pwd = mTextCnfPassword.getText().toString().trim();
-                String firstname = mFirstname.getText().toString().trim();
-                String surname = mSurname.getText().toString().trim();
-                String email = mEmail.getText().toString().trim();
-                String DOB = mDOB.getText().toString().trim();
-
-                if (pwd.equals(cnf_pwd)) {
-                    long val = db.addUser(user, pwd, firstname, surname, email, DOB);
-                    if (val != 0) {
-                        Toast.makeText(RegisterActivity.this, "You have registered", Toast.LENGTH_SHORT).show();
-                        Intent moveToLogin = new Intent(RegisterActivity.this, LoginActivity.class);
-                        startActivity(moveToLogin);
-                    } else {
-                        Toast.makeText(RegisterActivity.this, "Registeration Error", Toast.LENGTH_SHORT).show();
-                    }
-
-                } else {
-                    Toast.makeText(RegisterActivity.this, "Password is not matching", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
+
+    public void onSignUpClick(View view) {
+
+        if(view.getId()==R.id.button_register) {
+            EditText RUsername = (EditText) findViewById(R.id.edittext_username);
+            EditText RSurname = (EditText) findViewById(R.id.edittext_Surname);
+            EditText RFullname = (EditText) findViewById(R.id.edittext_First_Name);
+            EditText REmail = (EditText) findViewById(R.id.edittext_Email);
+            EditText RPassword = (EditText) findViewById(R.id.edittext_password);
+            EditText RConfirmPassword = (EditText) findViewById(R.id.edittext_cnf_password);
+            EditText RDOB = (EditText) findViewById(R.id.edittext_DOB);
+
+            String RUsernameStr = RUsername.getText().toString();
+            String RFullnameStr = RFullname.getText().toString();
+            String RSurnameStr = RSurname.getText().toString();
+            String REmailStr = REmail.getText().toString();
+            String ConPassStr = RConfirmPassword.getText().toString();
+            String RegPassStr = RPassword.getText().toString();
+            String RDOBStr = RDOB.getText().toString();
+
+            if(!RegPassStr.equals(ConPassStr))
+            {
+                Toast pass = Toast.makeText(RegisterActivity.this, "Passwords Does Not Match!", Toast.LENGTH_SHORT);
+                pass.show();
+            }else{
+
+                Contact c = new Contact();
+                c.setfname(RFullnameStr);
+                c.setuname(RUsernameStr);
+                c.setemail(REmailStr);
+                c.setpass(RegPassStr);
+                c.setDOB(RDOBStr);
+                c.setSname(RSurnameStr);
+
+                helper.insertContact(c);
+
+                Toast pass = Toast.makeText(RegisterActivity.this, "You Have Registered!", Toast.LENGTH_SHORT);
+                pass.show();
+
+                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(i);
+
+
+            }
+        }
+
+
+    }
+
+
 }

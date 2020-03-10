@@ -42,6 +42,7 @@
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="#FA3939"
+        android:onClick="onButtonClick"
         android:text="Login"
         android:textColor="#000000" />
 
@@ -61,6 +62,7 @@
             android:id="@+id/textview_register"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
+            android:onClick="onButtonClick"
             android:paddingLeft="10dp"
             android:text="Register"
             android:textColor="#0021C2"

@@ -82,14 +82,16 @@
         android:background="#FFFFFF"
         android:drawableLeft="@drawable/ic_password"
         android:hint="Confirm Password"/>
+
     <Button
         android:id="@+id/button_register"
         android:layout_width="206dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:background="#FA3939"
-        android:textColor="#000000"
-        android:text="Register"/>
+        android:onClick="onSignUpClick"
+        android:text="Register"
+        android:textColor="#000000" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -107,11 +109,12 @@
             android:id="@+id/textview_login"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
+            android:onClick="onSignUpClick"
             android:paddingLeft="10dp"
-            android:textStyle="bold"
+            android:text="Login"
             android:textColor="#0021C2"
             android:textSize="16sp"
-            android:text="Login"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 

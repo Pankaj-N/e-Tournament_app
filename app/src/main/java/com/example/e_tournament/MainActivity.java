@@ -9,7 +9,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -60,10 +59,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new JoinTournament()).commit();
                 break;
-            case R.id.nav_player:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new AddPlayer()).commit();
-                break;
+//            case R.id.nav_player:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new FlipCoin()).commit();
+//                break;
             case R.id.nav_team:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AddTeam()).commit();
