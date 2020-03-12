@@ -72,7 +72,8 @@
         android:layout_marginTop="10dp"
         android:background="#ffffff"
         android:drawableLeft="@drawable/ic_password"
-        android:hint="Password"/>
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/edittext_cnf_password"
@@ -81,7 +82,8 @@
         android:layout_marginTop="10dp"
         android:background="#FFFFFF"
         android:drawableLeft="@drawable/ic_password"
-        android:hint="Confirm Password"/>
+        android:hint="Confirm Password"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/button_register"
@@ -109,7 +111,7 @@
             android:id="@+id/textview_login"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:onClick="onSignUpClick"
+            android:onClick="onLoginClick"
             android:paddingLeft="10dp"
             android:text="Login"
             android:textColor="#0021C2"

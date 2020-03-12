@@ -1,9 +1,16 @@
 package com.example.e_tournament;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import java.util.Random;
+import android.view.LayoutInflater;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import java.util.Random;
+
+import android.view.ViewGroup;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -11,28 +18,38 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.Button;
 
-import com.example.e_tournament.R;
 
-public class FlipCoin extends AppCompatActivity {
+
+public class FlipCoin extends Fragment {
+
 
     public static final Random RANDOM = new Random();
     private ImageView coin;
     private Button btn;
+    private Button btn1;
 
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_player, container,false);
+        coin = (ImageView) v.findViewById(R.id.coin);
+        btn = (Button) v.findViewById(R.id.head);
+        btn1 = (Button) v.findViewById(R.id.tail);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_player);
-        coin = (ImageView) findViewById(R.id.coin);
-        btn = (Button) findViewById(R.id.btn1);
-        btn.setOnClickListener(new View.OnClickListener() {
+       btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public  void onClick(View v) {
+                flipCoin();
+            }
+        });
+
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 flipCoin();
             }
         });
+        return v;
     }
+
     private void flipCoin(){
         Animation fadeOut = new AlphaAnimation(1, 0);
         fadeOut.setInterpolator(new AccelerateInterpolator());

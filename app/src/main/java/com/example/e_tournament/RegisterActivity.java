@@ -18,6 +18,17 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
     }
 
+    public void onLoginClick(View view){
+        if(view.getId()==R.id.button_login){
+            Intent login = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(login);
+        }
+        else{
+            Intent login = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(login);
+        }
+    }
+
     public void onSignUpClick(View view) {
 
         if(view.getId()==R.id.button_register) {

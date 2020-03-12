@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -59,10 +60,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new JoinTournament()).commit();
                 break;
-//            case R.id.nav_player:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-//                        new FlipCoin()).commit();
-//                break;
+            case R.id.nav_player:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new FlipCoin()).commit();
+                break;
             case R.id.nav_team:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new AddTeam()).commit();
