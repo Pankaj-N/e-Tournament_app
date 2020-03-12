@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
@@ -15,8 +18,8 @@
             android:title="Join Tournament" />
         <item
             android:id="@+id/nav_player"
-            android:icon="@drawable/ic_player"
-            android:title="Add Player" />
+            android:icon="@drawable/ic_flip_black_24dp"
+            android:title="Flip Coin" />
         <item
             android:id="@+id/nav_team"
             android:icon="@drawable/ic_team"
@@ -36,7 +39,7 @@
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_logout"
-                android:title="Log Out :(" />
+                android:title="Log Out :("/>
         </menu>
     </item>
 </menu>
